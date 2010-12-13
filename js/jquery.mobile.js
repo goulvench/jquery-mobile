@@ -188,7 +188,6 @@
 			undefined,
 			true
 		);
-		$(':focus').blur();
 		event.preventDefault();
 	});	
 	
