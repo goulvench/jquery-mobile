@@ -31,6 +31,7 @@ function baseTagTest(){
 		base = $("<base>", {"href": fauxBase}).appendTo("head"),
 		link = $( "<a href='testurl'></a>" ).prependTo( fakeBody ),
 		rebase = link[0].href;
+	base[0].href = location.pathname;	
 	base.remove();
 	return rebase.indexOf(fauxBase) === 0;
 };
