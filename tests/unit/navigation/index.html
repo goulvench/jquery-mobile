@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>jQuery Mobile Navigation Test Suite</title>
+
+	<script type="text/javascript" src="../../../js/jquery.js"></script>
+	<script type="text/javascript" src="../../../js/"></script>
+	<script type="text/javascript" src="../../../tests/jquery.testHelper.js"></script>
+
+
+	<link rel="stylesheet" href="../../../themes/default/" type="text/css"/>
+	<link rel="stylesheet" href="../../../external/qunit.css" type="text/css"/>
+	<script type="text/javascript" src="../../../external/qunit.js"></script>
+
+	<script type="text/javascript" src="navigation_transitions.js"></script>
+	<script type="text/javascript" src="navigation_core.js"></script>
+</head>
+<body>
+
+<h1 id="qunit-header">jQuery Mobile Navigation Test Suite</h1>
+<h2 id="qunit-banner"></h2>
+<h2 id="qunit-userAgent"></h2>
+<ol id="qunit-tests">
+</ol>
+
+<div id="foo" data-role="page">
+	<a href="#bar" data-transition="flip"></a>
+</div>
+
+<div id="bar" data-role="page">
+	<a href="#baz"></a>
+</div>
+
+<div id="baz" data-role="page">
+	<a href="#foo"></a>
+</div>
+
+<div id="fade-trans" data-role="page">
+	<a href="#flip-trans" data-transition="fade"></a>
+</div>
+
+<div id="flip-trans" data-role="page">
+	<a href="#fade-trans" data-transition="flip"></a>
+</div>
+
+<div id="no-trans" data-role="page">
+	<a href="#pop-trans"></a>
+</div>
+
+<div id="pop-trans" data-role="page">
+	<a href="#no-trans" data-transition="pop"></a>
+</div>
+
+<div id="default-trans" data-role="page">
+	<a href="#no-trans"></a>
+</div>
+
+<div id="data-url" data-role="page">
+	<a href="data-url-tests/data-url.html"></a>
+</div>
+
+<div id="non-data-url" data-role="page">
+	<a href="data-url-tests/non-data-url.html"></a>
+</div>
+
+<div id="nested-data-url" data-role="page">
+	<a href="data-url-tests/nested.html"></a>
+</div>
+
+<div id="single-quotes-data-url" data-role="page">
+	<a href="data-url-tests/single-quotes.html"></a>
+</div>
+
+<div id="reverse-attr-data-url" data-role="page">
+	<a href="data-url-tests/reverse-attr.html"></a>
+</div>
+
+<div id="ajax-diabled-form" data-role="page">
+	<form method="POST" id="non-ajax-form" action="/ajax-disabled-form" data-ajax="false">
+	</form>
+
+	<form method="POST" id="ajax-form" action="/ajax-diabled-form">
+	</form>
+
+	<form method="POST" id="rand-ajax-form" action="/ajax-disabled-form" data-ajax="foo">
+	</form>
+</div>
+
+<div id="default-trans-dialog" data-role="page">
+	<a href="#no-trans-dialog" data-rel="dialog"></a>
+</div>
+
+<div id="no-trans-dialog" data-role="page">
+</div>
+
+<div id="dup-history-first" data-role="page">
+  <a href="#dup-history-second" data-transition="slideup" data-role="button" >
+		Page 2
+	</a>
+</div>
+
+<div id="dup-history-second" data-role="page">
+  <a href="#dup-history-first" data-transition="slideup" data-role="button">
+		Page 1
+	</a>
+  <a href="#dup-history-dialog" data-role="button" data-transition="pop" data-rel="dialog">Dialog</a>
+</div>
+
+<div id="dup-history-dialog" data-role="dialog">
+   <div data-role="header" data-position="inline">
+     <h1>Dialog</h1>
+   </div>
+</div>
+</body>
+</html>

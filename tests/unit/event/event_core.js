@@ -2,7 +2,7 @@
  * mobile event unit tests
  */
 
-(function( $ ) {
+(function($){
 	var libName = "jquery.mobile.event.js",
 			absFn = Math.abs,
 			originalEventFn = $.Event.prototype.originalEvent,
@@ -13,7 +13,7 @@
 	module(libName, {
 		teardown: function(){
 			$.each(events, function(i, name){
-				$("#main").unbind(name);
+				$("#qunit-fixture").unbind(name);
 			});
 
 			$($.event.special.scrollstart).unbind("scrollstart");
@@ -46,21 +46,21 @@
 	test( "defined event functions bind a closure when passed", function(){
 		expect( 1 );
 
-		$('#main')[events[0]](function(){
+		$('#qunit-fixture')[events[0]](function(){
 			ok(true, "event fired");
 		});
 
-		$('#main').trigger(events[0]);
+		$('#qunit-fixture').trigger(events[0]);
 	});
 
 	test( "defined event functions trigger the event with no arguments", function(){
 		expect( 1 );
 
-		$('#main')[events[0]](function(){
+		$('#qunit-fixture')[events[0]](function(){
 			ok(true, "event fired");
 		});
 
-		$('#main')[events[0]]();
+		$('#qunit-fixture')[events[0]]();
 	});
 
 	test( "defining event functions sets the attrFn to true", function(){
@@ -122,6 +122,11 @@
 	var forceTouchSupport = function(){
 		$.support.touch = true;
 		$.testHelper.reloadLib(libName);
+
+		// mock originalEvent information
+		$.Event.prototype.originalEvent = {
+			touches: [{ 'pageX' : 0 }, { 'pageY' : 0 }]
+		};
 	};
 
 	test( "long press fires tap hold after 750 ms", function(){
