@@ -19,7 +19,7 @@
 				if( newPath === undefined ){
 					newPath = location.hash;
 				}
-				return path.stripHash( newPath ).replace(/[^\/]*\.[^\/*]+$/, '');
+				return path.stripHash( newPath ).replace(/[^\/]*\.?[^\/*]+$/, '');
 			},
 
 			//return the substring of a filepath before the sub-page key, for making a server request
